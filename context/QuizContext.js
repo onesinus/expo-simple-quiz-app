@@ -20,6 +20,17 @@ export const QuizProvider = ({ children }) => {
       options: ["3", "4", "5", "6"],
       answer: "4"
     },
+    {
+        question: "What is 1 + 2?",
+        options: ["3", "4", "5", "6"],
+        answer: "3"
+      },
+      {
+        question: "What is 2 + 4?",
+        options: ["3", "4", "5", "6"],
+        answer: "6"
+      },
+    
     // Add more questions as needed
   ];
 
@@ -34,6 +45,11 @@ export const QuizProvider = ({ children }) => {
     nextQuestion();
   };
 
+  const resetQuiz = () => {
+    setScore(0);
+    setCurrentQuestionIndex(0);
+  }
+
   return (
     <QuizContext.Provider
       value={{
@@ -42,7 +58,8 @@ export const QuizProvider = ({ children }) => {
         questions,
         nextQuestion,
         selectOption,
-        totalQuestions: questions.length
+        totalQuestions: questions.length,
+        resetQuiz
       }}
     >
       {children}
